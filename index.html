@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard · Paris Housing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div id="loading">
+    <div class="spinner"></div>
+    <p>A carregar dataset…</p>
+  </div>
+
+  <div id="app">
+
+    <header>
+      <div class="brand">
+        <div class="brand-mark">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter">
+            <rect x="3"  y="13" width="4" height="8"/>
+            <rect x="10" y="8"  width="4" height="13"/>
+            <rect x="17" y="4"  width="4" height="17"/>
+            <line x1="2" y1="22" x2="22" y2="22"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Dashboard de Preços de Habitação</h1>
+          <span>Paris Housing Dataset — Análise Interativa</span>
+        </div>
+      </div>
+
+      <div class="kpis">
+        <div class="kpi" style="--kc:#60a5fa">
+          <div class="kpi-value" id="kv-total">—</div>
+          <div class="kpi-label">Imóveis</div>
+        </div>
+        <div class="kpi" style="--kc:#34d399">
+          <div class="kpi-value" id="kv-price">—</div>
+          <div class="kpi-label">Preço Médio</div>
+        </div>
+        <div class="kpi" style="--kc:#a78bfa">
+          <div class="kpi-value" id="kv-area">—</div>
+          <div class="kpi-label">Área Média</div>
+        </div>
+        <div class="kpi" style="--kc:#fb923c">
+          <div class="kpi-value" id="kv-pool">—</div>
+          <div class="kpi-label">Com Piscina</div>
+        </div>
+      </div>
+    </header>
+
+    <div id="filter-bar">
+      <div class="filter-group">
+        <label>Intervalo de Preço</label>
+        <div id="price-slider"></div>
+        <div class="range-labels">
+          <span id="range-min">—</span>
+          <span id="range-max">—</span>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <label>Zona (cityPartRange)</label>
+        <div id="zone-chips"></div>
+      </div>
+
+      <div class="filter-group">
+        <label>Piscina</label>
+        <div class="pill-group" id="pool-pills">
+          <button class="pill active" data-v="all">Todos</button>
+          <button class="pill" data-v="1">Com piscina</button>
+          <button class="pill" data-v="0">Sem piscina</button>
+        </div>
+      </div>
+
+      <div class="filter-meta">
+        <span id="count-display">—</span>
+        <button id="btn-reset">Resetar filtros</button>
+      </div>
+    </div>
+
+    <div id="dashboard">
+      <div class="card">
+        <div class="card-hdr">
+          <div>
+            <h2>Preço Médio por Zona</h2>
+            <p>cityPartRange vs. preço médio — comparação entre níveis de exclusividade</p>
+          </div>
+          <span class="badge" style="--bc:#60a5fa">Q1</span>
+        </div>
+        <div id="chart1"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-hdr">
+          <div>
+            <h2>Evolução por Ano de Construção</h2>
+            <p>Tendência do preço médio ao longo dos anos (made)</p>
+          </div>
+          <span class="badge" style="--bc:#34d399">Q2</span>
+        </div>
+        <div id="chart2"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-hdr">
+          <div>
+            <h2>Distribuição dos Preços</h2>
+            <p>Histograma empilhado por tipo de construção (antiga vs. nova) com linha de média</p>
+          </div>
+          <span class="badge" style="--bc:#a78bfa">Q3</span>
+        </div>
+        <div id="chart3"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-hdr">
+          <div>
+            <h2>Proporção com Piscina por Zona</h2>
+            <p>Barras 100% empilhadas — proporção de imóveis com e sem piscina por zona</p>
+          </div>
+          <span class="badge" style="--bc:#fb923c">Q4</span>
+        </div>
+        <div id="chart4"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tooltip"></div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
