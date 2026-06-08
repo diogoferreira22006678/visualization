@@ -72,14 +72,3 @@ An interactive data visualization dashboard built with D3.js v7, exploring the [
 ├── make_report.py      # Generates Relatorio_Paris_Housing.docx
 └── report.html         # Static report view
 ```
-
----
-
-## Generating the Report
-
-```bash
-pip install python-docx
-python make_report.py
-```
-
-Outputs `Relatorio_Paris_Housing.docx` with section-by-section chart descriptions and figure placeholders.

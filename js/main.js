@@ -412,14 +412,6 @@ function initChart4() {
   const poolG    = g.append('g');
   const labelsG  = g.append('g');
 
-  // Legend (vertical, top-right inside chart)
-  const legG = g.append('g').attr('transform', `translate(${IW - 80}, 4)`);
-  [{ col: C.gray, lbl: 'Sem Piscina' }, { col: C.blue, lbl: 'Com Piscina' }].forEach((d, i) => {
-    const row = legG.append('g').attr('transform', `translate(0, ${i * 13})`);
-    row.append('rect').attr('width', 8).attr('height', 8).attr('fill', d.col).attr('opacity', 0.8);
-    row.append('text').attr('x', 12).attr('y', 7.5).attr('font-size', 9).attr('fill', '#4b5563').text(d.lbl);
-  });
-
   xLabel(g, 'Zona (cityPartRange)');
   yLabel(g, 'Proporção (%)');
 
